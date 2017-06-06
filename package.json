@@ -1,27 +1,26 @@
 {
-  "name": "test-repo",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "babel-node src/index --presets env",
-  },
-  "repository": {
-    "type": "git",
-
-  },
-  "keywords": [],
-  "author": "Natalija",
-  "license": "MIT",
-  "engines": {
-    "node": "4.8.3",
-    "npm": "4.2.0"
-  },
-  "dependencies": {
-    "githubhook": "^1.7.1",
-    "lodash": "^4.17.4",
-    "nodemailer": "^4.0.1",
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.5.1"
-  },
+	"name": "test-repo",
+	"version": "0.0.1",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "babel-node src/index --presets env"
+	},
+	"repository": {
+		"type": "git"
+	},
+	"keywords": [],
+	"author": "Natalija",
+	"license": "MIT",
+	"engines": {
+		"node": "4.8.3",
+		"npm": "4.2.0"
+	},
+	"dependencies": {
+		"githubhook": "^1.7.1",
+		"lodash": "^4.17.4",
+		"nodemailer": "^4.0.1",
+		"babel-cli": "^6.24.1",
+		"babel-preset-env": "^1.5.1"
+	}
 }
