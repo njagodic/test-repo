@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import * as nodemailer from 'nodemailer';
 
 // https://nodemailer.com/about/
+// initialization for mailerWrapper
 export class MailerWrapper {
     constructor(smtpConfig, mailTitle, mailingList) {
         this.initTransporter(smtpConfig);
@@ -9,7 +10,7 @@ export class MailerWrapper {
         this.mailTitle = mailTitle;
     }
 
-    // smtp settings which needs to be set as variables (locally or on Heroku)
+    // set up mail data
     initTransporter(smtpConfig) {
         this.transporter = nodemailer.createTransport({
             host: smtpConfig.hostname,
@@ -22,7 +23,7 @@ export class MailerWrapper {
         });
     }
 
-    // set up mail data
+    // function that's builds and sends mail
     sendMail(pushInfo) {
         const mailOptions = {
             to: this.mailingList.join(','),
@@ -30,9 +31,10 @@ export class MailerWrapper {
             html: this.createHtmlBody(pushInfo)
         };
 
+        // the actual method that sends the email
         this.transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                process.stderr.write(error);
+                process.stderr.write(error.response);
             }
             else {
                 process.stdout.write(`Message ${info.messageId} sent: ${info.response}\n`);
@@ -40,7 +42,7 @@ export class MailerWrapper {
         });
     }
 
-    // email design title and title for file changes 
+    // genterate html of email body (title, file change lists) 
     createHtmlBody(pushInfo) {
         let htmlBody = `<h2>${this.mailTitle}</h2><br>`;
 
@@ -57,7 +59,7 @@ export class MailerWrapper {
         return htmlBody;
     }
 
-    // generate link for file which was changed, so that it can be opened in git
+    // generate links for whole file change list, so that it can be opened in git
     static createHtmlList(title, collection, repoName, branchName) {
         let html = `<h3>${title}:</h3><br>`;
         html += '<ul>';

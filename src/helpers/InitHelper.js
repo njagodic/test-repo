@@ -1,4 +1,4 @@
-// check for parameters, if they are missing or wrong show error
+// check for parameters, if they are missing return error
 export class InitHelper {
     static checkConfig() {
         const missingEnvVariables = [];

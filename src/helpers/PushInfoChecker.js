@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
 
+// check if mail can be send
 export class PushInfoChecker {
     static sendMailCheck(appConfig, pushInfo) {
         let shouldSend = false;
@@ -20,6 +21,7 @@ export class PushInfoChecker {
         return shouldSend;
     }
 
+    // check for changes in specified folders
     static commitIncludes(pushInfo, pathInfo) {
         let commitIncludesPath = false;
 
@@ -48,6 +50,7 @@ export class PushInfoChecker {
         return commitIncludesPath;
     }
 
+    // check for changes in specified files
     static commitEquals(pushInfo, pathInfo) {
         let commitEqualsPath = false;
 

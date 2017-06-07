@@ -19,11 +19,8 @@ For use in Heroku, the same parameters needs to be specifed in Heroku app.
 
 Requirements:
 Node.js v6+
-npm install nodemailer --save
-npm install githubhook
-npm install lodash
-npm install -g babel-cli
-npm install --save-dev babel-cli ????
+npm install
 
+https://lodash.com/docs/4.17.4 - helper library
 
 
