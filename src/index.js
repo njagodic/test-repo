@@ -15,6 +15,7 @@ if (err) {
     process.exit();
 }
 
+// add path for better security of URL
 const github = githubHook({
     host: '0.0.0.0',
     port: process.env.PORT || 9898,

@@ -9,6 +9,7 @@ export class MailerWrapper {
         this.mailTitle = mailTitle;
     }
 
+    // smtp settings which needs to be set as variables (locally or on Heroku)
     initTransporter(smtpConfig) {
         this.transporter = nodemailer.createTransport({
             host: smtpConfig.hostname,
@@ -21,6 +22,7 @@ export class MailerWrapper {
         });
     }
 
+    // set up mail data
     sendMail(pushInfo) {
         const mailOptions = {
             to: this.mailingList.join(','),
@@ -38,8 +40,9 @@ export class MailerWrapper {
         });
     }
 
+    // email design title and title for file changes 
     createHtmlBody(pushInfo) {
-        let htmlBody = `<h1>${this.mailTitle}</h1><br>`;
+        let htmlBody = `<h2>${this.mailTitle}</h2><br>`;
 
         if (!_.isEmpty(pushInfo.removedFilesArray)) {
             htmlBody += MailerWrapper.createHtmlList('Removed Files', pushInfo.removedFilesArray, pushInfo.repoName, pushInfo.branchName);
@@ -54,6 +57,7 @@ export class MailerWrapper {
         return htmlBody;
     }
 
+    // generate link for file which was changed, so that it can be opened in git
     static createHtmlList(title, collection, repoName, branchName) {
         let html = `<h3>${title}:</h3><br>`;
         html += '<ul>';
