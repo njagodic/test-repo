@@ -1,2 +1,0 @@
-# configuration for Heroku dyno
-web: babel-node push_webhook/src/index --presets env
